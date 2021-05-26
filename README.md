@@ -5,7 +5,7 @@ Our aim is to provide solution that is starve-free for both Reader and Writer pr
 
 The Solution idea:
 
-Let's first consider a writer process. First the process will check the number of active and waiting readers. If both, the number of waiting readers and number of active readers are not zero, then it will wait until a reader process signals and allows that writer to enter. Otherwise, if its zero then it will read away directly. Once the writer process is done, if it is not the last writer, then it will signal and allow all the "waiting" writers to enter else the "waiting" readers. Similarily, the last reader process will signal and allow the "waiting" writers processes to enter.
+Let's first consider a writer process. First the process will check the number of active and waiting readers. If both, the number of waiting readers and number of active readers are not zero, then it will wait until a reader process signals and allows that writer to enter. Otherwise, if its zero then it will write away directly. Once the writer process is done, if it is not the last writer, then it will signal and allow all the "waiting" writers to enter else the "waiting" readers. Similarily, the last reader process will signal and allow the "waiting" writers processes to enter.
 
 The solution can be visualised by imagining a dressing room and two benches outside the room, one for waiting reader and other for waiting writer processes. Suppose we are a writer, if there is no reader inside and no reader on the bench, then we can enter. If there are readers inside, then the last reader before leaving will allow all the writers on the bench to enter in the room. Similarily, the last writer to leave the room will allow all the readers on the bench to enter.
 
